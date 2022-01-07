@@ -13,7 +13,7 @@
 
 
 ### ターゲットユーザ
-ルアー釣りをやっている人、ルアー釣りに興味がある人。
+ルアー釣りをやっている人、ルアー釣りに興味がある人！
 
 ### 主な利用シーン
 - 釣れた魚を共有したい時！
@@ -21,7 +21,8 @@
 - 釣れているポイントやルアーを確認したい時！
 
 ## 設計書
-<...>
+ワイヤーフレーム
+<https://docs.google.com/presentation/d/1RdI3cm6dMEsp5W3Kg5FrFxifJKnXfy494ojXw7HlIyU/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1QKqcPmb1pyDfqlheWVhWfX-hWD8cBMzDq7lztu4-R68/edit?usp=sharing>
