@@ -21,17 +21,14 @@
 - 釣れているポイントやルアーを確認したい時！
 
 ## 設計書
-ワイヤーフレーム
-　<https://docs.google.com/presentation/d/1RdI3cm6dMEsp5W3Kg5FrFxifJKnXfy494ojXw7HlIyU/edit?usp=sharing>
-
 ER図
- <https://drive.google.com/file/d/11qUcZ-knvQUK0KoBZf5OiD5jnAUwAk5z/view?usp=sharing>
+  <https://drive.google.com/file/d/11qUcZ-knvQUK0KoBZf5OiD5jnAUwAk5z/view?usp=sharing>
 
 テーブル定義書
- <https://docs.google.com/spreadsheets/d/14Jw34QCZ99VHcLDAnTBfVYIzzxarytgItmpnWxSSZCU/edit?usp=sharing>
+  <https://docs.google.com/spreadsheets/d/14Jw34QCZ99VHcLDAnTBfVYIzzxarytgItmpnWxSSZCU/edit?usp=sharing>
 
 アプリケーション詳細設計
- <>
+  <https://docs.google.com/spreadsheets/d/11qc-ybpGqOwrLs74gymN7p5gKMiunniMIP0R7r2kcyk/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1QKqcPmb1pyDfqlheWVhWfX-hWD8cBMzDq7lztu4-R68/edit?usp=sharing>
