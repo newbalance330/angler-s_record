@@ -21,13 +21,13 @@
 - 釣れているポイントやルアーを確認したい時！
 
 ## 設計書
-ER図
+- ER図
   <https://drive.google.com/file/d/11qUcZ-knvQUK0KoBZf5OiD5jnAUwAk5z/view?usp=sharing>
 
-テーブル定義書
+- テーブル定義書
   <https://docs.google.com/spreadsheets/d/14Jw34QCZ99VHcLDAnTBfVYIzzxarytgItmpnWxSSZCU/edit?usp=sharing>
 
-アプリケーション詳細設計
+- アプリケーション詳細設計
   <https://docs.google.com/spreadsheets/d/11qc-ybpGqOwrLs74gymN7p5gKMiunniMIP0R7r2kcyk/edit?usp=sharing>
 
 ## チャレンジ要素一覧
