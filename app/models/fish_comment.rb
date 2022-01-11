@@ -1,0 +1,2 @@
+class FishComment < ApplicationRecord
+end
