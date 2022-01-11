@@ -1,0 +1,2 @@
+class FishCommentsController < ApplicationController
+end

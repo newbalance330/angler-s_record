@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'relationships/followings'
-  get 'relationships/followers'
   root to: 'homes#top'
   get 'home/about' => 'homes#about', as: 'about'
   devise_for :users
@@ -13,7 +11,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :fish do
+  resources :fishes do
     resource :fish_favorites, only: [:create, :destroy]
     resource :fish_comments, only: [:create, :destroy]
   end

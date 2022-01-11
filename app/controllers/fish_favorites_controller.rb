@@ -1,0 +1,2 @@
+class FishFavoritesController < ApplicationController
+end
