@@ -1,2 +1,19 @@
 <h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h3>アイテム詳細</h3>
+ <%= attachment_image_tag @item, :item_image, :fill, 550, 600, format: "jpeg" %>
+
+<th>商品</th>
+  <td><%= @item.name %></td>
+
+  <th>商品説明</th>
+  　<td><%= @item.body %></td>
+
+  　 <th>保有ステータス</th>
+          <td><%= @item.status %></td>
+
+  　<%= link_to edit_item_path(@item.id) do %>
+        <button type="button" class="btn btn-success"> 編集する </button>
+    <% end %>
+    <%= link_to item_path(@item.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
+        <button type="button" class="btn btn-success"> 削除する </button>
+    <% end %>
