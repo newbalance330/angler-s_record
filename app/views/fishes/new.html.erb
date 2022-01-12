@@ -1,2 +1,23 @@
 <h1>Fishes#new</h1>
-<p>Find me in app/views/fishes/new.html.erb</p>
+ <%= form_with model: @fish, url: fishes_path, local:true do |f| %>
+ </div>
+   <table class="admin_items">
+      <tr>
+        <th>釣果画像</th>
+        <td><%#= f.attachment_field :image %></td>
+      </tr>
+      <tr>
+        <th>魚種</th>
+        <td><%= f.text_field :fish_name %></td>
+      </tr>
+      <tr>
+        <th>ルアー名　メーカー</th>
+        <td><%= f.text_field :lure %></td>
+      </tr>
+       <tr>
+        <th>本文</th>
+        <td><%= f.text_area :body %></td>
+      </tr>
+   </table>
+   <%= f.submit "新規登録" , class: 'btn btn-primary' %>
+  <% end %>
