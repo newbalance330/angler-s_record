@@ -23,7 +23,20 @@
     <%= link_to fish_path(@fish.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
         <button type="button" class="btn btn-success"> 削除する </button>
     <% end %>
+<% end %>
 
+<% if @fish.fish_favorited_by?(current_user) %>
+    <p>
+      <%= link_to fish_fish_favorites_path(@fish), method: :delete do %>
+       ♥<%= @fish.fish_favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to fish_fish_favorites_path(@fish), method: :post do %>
+       ♡<%= @fish.fish_favorites.count %> いいね
+      <% end %>
+        </p>
 <% end %>
 
 <div>
@@ -32,11 +45,19 @@
       <p><%#= image_tag('sample-author1.jpg') %></p>
       <%= fish_comment.user.name %>
       <%= fish_comment.created_at.strftime('%Y/%m/%d') %><%= fish_comment.comment %>
+      <% if fish_comment.user == current_user %>
+        <div>
+          <%= link_to "削除", fish_fish_comment_path(fish_comment.fish, fish_comment), method: :delete %>
+        </div>
+      <% end %>
+
+
+
     <% end %>
     </div>
     <div>
     <%= form_with(model:[@fish, @fish_comment], local: true) do |f| %>
-      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに" %>
       <%= f.submit "送信する" %>
     <% end %>
 </div>

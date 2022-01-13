@@ -1,5 +1,5 @@
 class FishCommentsController < ApplicationController
-  
+
  def create
     fish = Fish.find(params[:fish_id])
     comment = current_user.fish_comments.new(fish_comment_params)
@@ -8,10 +8,10 @@ class FishCommentsController < ApplicationController
     redirect_to fish_index_path(fish)
  end
 
-  def destroy
-     FishComment.find_by(id: params[:id]).destroy
-    redirect_to fish_index_path(params[:post_image_id])
-  end
+ def destroy
+    FishComment.find_by(id: params[:id]).destroy
+    redirect_to fish_index_path(params[:fish_image_id])
+ end
 
   private
 
