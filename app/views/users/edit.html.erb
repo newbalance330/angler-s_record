@@ -1,0 +1,22 @@
+<h1>ユーザー情報編集画面</h1>
+<h3>変更前の画像</h3>
+<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: "jpeg" %>
+<%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
+      <table>
+        <tr>
+          <th>アイコン画像</th>
+          <td><%= f.attachment_field :profile_image %></td>
+        </tr>
+
+        <tr>
+          <th>ユーザー名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
+          <th>紹介文</th>
+          <td><%= f.text_area :introduction %></td>
+        </tr>
+       </table>
+      <%= f.submit "変更を保存", class: 'btn btn-primary' %>
+    <% end %>

@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_01_11_065423) do
 
+  create_table "fish", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "image_id"
+    t.string "fish_name"
+    t.string "lure"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "fish_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "fish_id"
@@ -23,16 +33,6 @@ ActiveRecord::Schema.define(version: 2022_01_11_065423) do
   create_table "fish_favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "fish_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fishes", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "image_id"
-    t.string "fish_name"
-    t.string "lure"
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

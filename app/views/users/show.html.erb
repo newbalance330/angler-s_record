@@ -1,0 +1,16 @@
+<h1>ユーザー詳細</h1>
+<table>
+ <tr><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+  <tr>
+	  <th>ユーザー名</th>
+	  <th><%= @user.name %></th>
+  </tr>
+  <tr>
+	  <th>紹介文</th>
+	  <th><%= @user.introduction %></th>
+	  <tr>
+	  </table>
+	  <% if user_signed_in? && @user == current_user %>
+     <%= link_to '編集画面',edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
+    <% end %>
+

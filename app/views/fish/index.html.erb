@@ -1,0 +1,9 @@
+<h1>釣果一覧</h1>
+
+<% @fish.each do |fish| %>
+<%= attachment_image_tag fish, :image, :fill, 100, 100, format: 'jpeg' %>
+ <%= link_to fish.fish_name, fish_path(fish.id) %></td>
+  <td><%= fish.lure %></td>
+  <td><%= fish.body %></td>
+  <p><%= link_to "#{fish.fish_comments.count} コメント", fish_path(fish.id) %></p>
+<% end %>

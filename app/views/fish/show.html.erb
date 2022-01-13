@@ -1,0 +1,42 @@
+<h1>Fish#show</h1>
+ <table class="table cart_products">
+   <%= attachment_image_tag @fish, :image, :fill, 550, 600, format: "jpeg" %>
+        <tr>
+          <th>商品</th>
+          <td><%= @fish.fish_name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @fish.lure %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @fish.body %></td>
+        </tr>
+      </table>
+
+<% if @fish.user == current_user %>
+
+    <%= link_to edit_fish_path(@fish.id) do %>
+        <button type="button" class="btn btn-success"> 編集する </button>
+    <% end %>
+    <%= link_to fish_path(@fish.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
+        <button type="button" class="btn btn-success"> 削除する </button>
+    <% end %>
+
+<% end %>
+
+<div>
+    <p>コメント件数：<%= @fish.fish_comments.count %></p>
+    <% @fish.fish_comments.each do |fish_comment| %>
+      <p><%#= image_tag('sample-author1.jpg') %></p>
+      <%= fish_comment.user.name %>
+      <%= fish_comment.created_at.strftime('%Y/%m/%d') %><%= fish_comment.comment %>
+    <% end %>
+    </div>
+    <div>
+    <%= form_with(model:[@fish, @fish_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+</div>

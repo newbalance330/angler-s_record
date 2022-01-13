@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
 
-  resources :fishes do
+  resources :fish do
     resource :fish_favorites, only: [:create, :destroy]
     resource :fish_comments, only: [:create, :destroy]
   end
