@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :fish do
+    resources :fish_comments, only: [:create, :destroy]
     resource :fish_favorites, only: [:create, :destroy]
-    resource :fish_comments, only: [:create, :destroy]
   end
 
   resources :items

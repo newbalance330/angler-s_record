@@ -6,4 +6,9 @@ class Fish < ApplicationRecord
   has_many :spots, dependent: :destroy
 
   attachment :image
+  
+  def fish_favorited_by?(user)
+    fish_favorites.where(user_id: user.id).exists?
+  end
+  
 end
