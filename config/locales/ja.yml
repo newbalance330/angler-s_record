@@ -1,0 +1,7 @@
+ja:
+  enum:
+    item:
+      status:
+        retention: "所有"
+        lost: "ロスト"
+        want: "欲しい!"

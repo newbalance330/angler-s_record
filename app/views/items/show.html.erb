@@ -9,7 +9,9 @@
   　<td><%= @item.body %></td>
 
   　 <th>保有ステータス</th>
-          <td><%= @item.status %></td>
+          <td><%= I18n.t("enum.item.status.#{@item.status}")%></td>
+
+ <% if @item.user == current_user %>
 
   　<%= link_to edit_item_path(@item.id) do %>
         <button type="button" class="btn btn-success"> 編集する </button>
@@ -17,3 +19,4 @@
     <%= link_to item_path(@item.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
         <button type="button" class="btn btn-success"> 削除する </button>
     <% end %>
+  <% end %>

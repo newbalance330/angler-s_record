@@ -5,5 +5,5 @@
  <%= link_to item.name, item_path(item.id) %></td>
           <td class="col-md-2"><%= item.name %></td>
           <td class="col-md-2"><%= item.body %></td>
-          <td class="col-md-2"><%#= @item.status ? "所有" : "ロスト" : "欲しい!!"%></td>
+          <td class="col-md-2"><%= I18n.t("enum.item.status.#{item.status}")%></td>
 <% end %>

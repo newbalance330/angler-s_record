@@ -1,4 +1,4 @@
-class FishesController < ApplicationController
+class FishController < ApplicationController
 
   def new
     @fish = Fish.new
@@ -16,14 +16,32 @@ class FishesController < ApplicationController
     end
   end
 
-  def index
+  def show
+    @fish = Fish.find(params[:id])
+    @fish_comment = FishComment.new
+
   end
 
-  def show
+  def index
+    @fish = Fish.all
   end
 
   def edit
+    @fish = Fish.find(params[:id])
   end
+
+  def update
+    fish = Fish.find(params[:id])
+    fish.update(fish_params)
+    redirect_to fish_path(fish.id)
+  end
+
+  def destroy
+    fish = Fish.find(params[:id])
+    fish.destroy
+    redirect_to fish_index_path
+  end
+
 
   private
 
