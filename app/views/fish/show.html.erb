@@ -1,3 +1,6 @@
+
+<%= render 'users/info', user: @user %>
+
 <h1>Fish#show</h1>
  <table class="table cart_products">
    <%= attachment_image_tag @fish, :image, :fill, 550, 600, format: "jpeg" %>
@@ -62,7 +65,7 @@
     <% end %>
 </div>
 
-<div class="card-list-container py-5">
+<div class="card-list-container-fluid py-5">
    <div class="card w-50 mx-auto  mt-4 shadow-lg">
      <%= link_to fish_path(@fish.id) do %>
        <%= attachment_image_tag @fish, :image, class:"card-img-top "; %>

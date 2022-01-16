@@ -1,3 +1,34 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.background {
+  background-image: url(/img/'fishing-g05c42157b_1920.jpg');
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 550px;
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+  opacity: .9;
+  font-family: 'Great Vibes', cursive;
+}
+
+
+
+
+
+.header {
+  height: 100vh;
+}
+
+.header .jumbotron {
+  background-image: url(/img/'fishing-g05c42157b_1920.jpg');
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  height: 90%;
+  margin-bottom: 0;
+}
