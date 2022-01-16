@@ -19,6 +19,7 @@ class FishController < ApplicationController
   def show
     @fish = Fish.find(params[:id])
     @fish_comment = FishComment.new
+    @user = @fish.user
 
   end
 

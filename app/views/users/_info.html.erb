@@ -1,0 +1,29 @@
+ <h1>ユーザー詳細</h1>
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-1 offset-">
+             <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "img/no_image.jpg", size:'100x100', class:" rounded-circle" %>
+        </div class="col-1">
+        <div>
+          <th><%= user.name %></th>
+        </div>
+      </div>
+    </div>
+
+
+<table>
+ <tr><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "img/no_image.jpg", size:'200x200' %>
+  <tr>
+	  <th>ユーザー名</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>紹介文</th>
+	  <th><%= user.introduction %></th>
+	  <tr>
+	  </table>
+	  <% if user_signed_in? && user == current_user %>
+	   <%= link_to '新規釣果投稿',new_fish_path(user),class: "btn  btn-info fas fa-fish" %>
+	    <%= link_to 'アイテムBox',items_path(user),class: "btn  btn-success  fas fa-toolbox" %>
+     <%= link_to '編集画面',edit_user_path(user),class: "btn btn-warning fas fa-user-cog edit_user_#{user.id}" %>
+    <% end %>
