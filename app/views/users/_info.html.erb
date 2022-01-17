@@ -22,6 +22,18 @@
 	  <th><%= user.introduction %></th>
 	  <tr>
 	  </table>
+	  
+	  <tr>
+      <th>follows</th>
+      <th><%= link_to user.followings.count, user_followings_path(user.id) %></th>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
+    </tr>
+
+	  
+	  
 	  <% if user_signed_in? && user == current_user %>
 	   <%= link_to '新規釣果投稿',new_fish_path(user),class: "btn  btn-info fas fa-fish" %>
 	    <%= link_to 'アイテムBox',items_path(user),class: "btn  btn-success  fas fa-toolbox" %>
