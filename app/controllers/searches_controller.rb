@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
 
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
-    elsif
+    elsif @range == "Fish"
       @fish = Fish.looks(params[:search], params[:word])
     else
       @items = Item.looks(params[:search], params[:word])

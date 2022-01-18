@@ -1,6 +1,9 @@
 <h2>検索結果一覧</h2>
 
 <table class="table table-hover table-inverse">
+  <% if !params[:range].blank? && params[:word] == "" %>
+    <p>検索結果はありません.</p>
+  <% end %>
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
     <tbody>
@@ -11,7 +14,7 @@
         </tr>
       <% end %>
     </tbody>
-  <% elsif %>
+  <% elsif @range == "Fish" %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがfishの時) -->
     <tbody>
       <% @fish.each do |fish| %>
@@ -22,7 +25,8 @@
         </tr>
       <% end %>
     </tbody>
-  <% else %>
+  <% elsif @range == "Item" %>
+    <%= flash[:notice] %>
     <!--検索対象モデルがUserでもfishでもない時(= 検索対象モデルがItemの時) -->
     <tbody>
       <% @items.each do |item| %>
@@ -32,5 +36,7 @@
         </tr>
       <% end %>
     </tbody>
+  <% else %>
+    <h3>検索に該当する投稿はありませんでした。</h3>
   <% end %>
 </table>
