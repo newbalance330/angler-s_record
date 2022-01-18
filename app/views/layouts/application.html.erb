@@ -37,8 +37,12 @@
           </div>
         </div>
       </nav>
+      <div class="container">
+        <%= render 'searches/search' %>
+      </div>
     </header>
     <main>
+      <p id="notice"><%= notice %></p>
       <%= yield %>
     </main>
     <footer class="bg-dark text-white pt-3">

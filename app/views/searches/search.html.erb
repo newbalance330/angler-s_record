@@ -1,0 +1,36 @@
+<h2>検索結果一覧</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user_path(user.id) %></td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% elsif %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがfishの時) -->
+    <tbody>
+      <% @fish.each do |fish| %>
+        <tr>
+          <td><%= fish.fish_name %></td>
+          <td><%= fish.lure %></td>
+          <td><%= fish.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserでもfishでもない時(= 検索対象モデルがItemの時) -->
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
