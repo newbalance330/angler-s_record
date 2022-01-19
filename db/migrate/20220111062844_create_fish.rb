@@ -6,7 +6,10 @@ class CreateFish < ActiveRecord::Migration[5.2]
       t.string :fish_name
       t.string :lure
       t.text :body
-
+      t.string :address
+      t.float :latitude
+      t.float :longitude
+     
       t.timestamps
     end
   end

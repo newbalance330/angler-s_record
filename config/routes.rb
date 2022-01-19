@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resource :fish_favorites, only: [:create, :destroy]
   end
 
+
   resources :items
-  get '/spot_request', to: 'spots#spot', as: 'spot_request'
 
 end

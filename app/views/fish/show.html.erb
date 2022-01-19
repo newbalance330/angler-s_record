@@ -89,3 +89,28 @@
      </div>
    </div>
 </div>
+
+
+<h2>gmap</h2>
+<!-- form_withはデフォルトでremote: trueの挙動になります -->
+
+
+<div id='map'></div>
+
+<style>
+#map{
+  height: 600px;
+}
+</style>
+
+<script>
+ let mapInstance
+
+function initMap(){
+ mapInstance = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 35.680, lng: 139.767},
+  zoom: 8
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
