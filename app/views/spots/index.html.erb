@@ -1,0 +1,26 @@
+
+<!-- form_withはデフォルトでremote: trueの挙動になります -->
+<%= form_with url: spot_request_path, method: :get do |f|%>
+  <%= f.text_field :name %>
+  <%= f.submit '地図表示' %>
+<% end %>
+
+<h2>gmap</h2>
+<div id='map'></div>
+
+<style>
+#map{
+  height: 600px;
+}
+</style>
+
+<script>
+let mapInstance
+
+function initMap(){
+ mapInstance = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 35.680, lng: 139.767},
+  zoom: 8
+  });
+}
+</script>
