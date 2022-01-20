@@ -119,10 +119,10 @@
     // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
    mapInstance = new google.maps.Map(document.getElementById('map'), {
     center: {
-      lat: 35.681,
-      lng: 139.767
+      lat: <%=@fish.latitude%>,
+      lng: <%=@fish.longitude%>
     },
-    zoom: 8
+    zoom: 10
  });
 
  // 保存された地図情報からピンをさす

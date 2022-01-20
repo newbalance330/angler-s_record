@@ -18,18 +18,22 @@
  @import 'font-awesome';
  
  
- 
-
-
-body {
-  font-family: 'fantasy';
-  font-size: 20px;
-  line-height: 1.8;
-  color: #000000;
-  background-image: none;
-  background-color: #0304021c;
-  margin: 0 auto;
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+
+// body {
+//   font-family: 'fantasy';
+//   font-size: 20px;
+//   line-height: 1.8;
+//   color: #000000;
+//   background-image: none;
+//   background-color: #0304021c;
+//   margin: 0 auto;
+// }
 
 // map系はなくても良さそう
 // .map_wrapper {
@@ -46,3 +50,17 @@ body {
 //   top: 0;
 //   left: 0;
 // } 
+
+ .details li {
+      list-style: none;
+    }
+    
+    
+    li {
+        margin-bottom:15px;
+        
+    }
+    
+    
+    
+    

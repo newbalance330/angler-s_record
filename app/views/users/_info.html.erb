@@ -1,41 +1,49 @@
- <h1>ユーザー詳細</h1>
-<div class="container-fluid">
+ <div class="container">
+    <div class="jumbotron">
       <div class="row">
-        <div class="col-1 offset-">
-             <%= attachment_image_tag user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "img/no_image.jpg", size:'100x100', class:" rounded-circle" %>
-        </div class="col-1">
-        <div>
-          <th><%= user.name %></th>
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <%= attachment_image_tag user, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "img/no_image.jpg", size:'100x100', class:"img-thumbnail rounded-circle" %>
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h3><%= user.name %></h3>
+          </div>
+          <ul class="container details">
+            <li>
+              <tr>
+                <th>~紹介文~<br><%= user.introduction %></th>
+              </tr>
+            </li>
+            <li>
+              <tr>
+                <th>follows</th>
+                <th><%= link_to user.followings.count, user_followings_path(user.id) %></th>
+              </tr>
+              <tr>
+                <th>followers</th>
+                <th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
+              </tr>
+            </li>
+            <li>
+              <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete,class: "btn  btn-danger" %>
+                <% else %>
+                  <%= link_to "フォローする", user_relationships_path(@user.id), method: :post,class: "btn  btn-primary" %>
+                <% end %>
+              <% end %>
+            </li>
+            <li>
+              <% if user_signed_in? && user == current_user %>
+                <%= link_to '新規釣果投稿',new_fish_path(user),class: "btn  btn-info fas fa-fish" %>
+                <%= link_to 'アイテムBox',items_path(user),class: "btn  btn-success  fas fa-toolbox" %>
+                <%= link_to '編集画面',edit_user_path(user),class: "btn btn-warning fas fa-user-cog edit_user_#{user.id}" %>
+              <% else %>
+                <%= link_to 'アイテムBox',items_path(user),class: "btn  btn-success  fas fa-toolbox" %>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-
-
-<table>
- <tr><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "img/no_image.jpg", size:'200x200' %>
-  <tr>
-	  <th>ユーザー名</th>
-	  <th><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th>紹介文</th>
-	  <th><%= user.introduction %></th>
-	  <tr>
-	  </table>
-	  
-	  <tr>
-      <th>follows</th>
-      <th><%= link_to user.followings.count, user_followings_path(user.id) %></th>
-    </tr>
-    <tr>
-      <th>followers</th>
-      <th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
-    </tr>
-
-	  
-	  
-	  <% if user_signed_in? && user == current_user %>
-	   <%= link_to '新規釣果投稿',new_fish_path(user),class: "btn  btn-info fas fa-fish" %>
-	    <%= link_to 'アイテムBox',items_path(user),class: "btn  btn-success  fas fa-toolbox" %>
-     <%= link_to '編集画面',edit_user_path(user),class: "btn btn-warning fas fa-user-cog edit_user_#{user.id}" %>
-    <% end %>
+ </div>
