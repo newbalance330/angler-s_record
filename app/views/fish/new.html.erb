@@ -1,5 +1,5 @@
 <h1>Fishes#new</h1>
- <%= form_with model: @fish, url: fish_index_path, local:true do |f| %>
+ <%= form_with model: @fish, local:true do |f| %>
  </div>
    <table class="admin_items">
       <tr>
@@ -14,10 +14,72 @@
         <th>ルアー名　メーカー</th>
         <td><%= f.text_field :lure %></td>
       </tr>
-       <tr>
+      <tr>
+        <th>住所</th>
+        <td><input id="address" type="textbox" value=""></td>
+        <td><input type="button" value="検索" onclick="codeAddress()"></td>
+        <input type="hidden" name="fish[address]" id="hidden_address">
+      </tr>
+      <tr>
         <th>本文</th>
         <td><%= f.text_area :body %></td>
       </tr>
    </table>
    <%= f.submit "新規登録" , class: 'btn btn-primary' %>
   <% end %>
+
+<div id='map'></div>
+<style>
+#map{
+  height: 600px;
+}
+</style>
+
+<script>
+  let map
+  let geocoder
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: 35.681,
+        lng: 139.767
+      },
+      zoom: 8
+    });
+  }
+function codeAddress() {
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode({
+      'address': inputAddress
+    }, function (results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+
+       // ピンを中心として表示させる為のコード
+     google.maps.event.addListener(map, 'center_changed', function(){
+          var location = map.getCenter();
+          marker.setPosition(location);
+      });
+
+        // 検索値を隠しデータとしてセット
+      let hidden_address = document.getElementById('hidden_address');
+      console.log(hidden_address)
+        hidden_address.setAttribute("value", inputAddress);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>

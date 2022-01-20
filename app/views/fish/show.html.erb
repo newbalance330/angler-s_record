@@ -16,6 +16,10 @@
           <th>商品説明</th>
           <td><%= @fish.body %></td>
         </tr>
+        <tr>
+          <th>ポイント</th>
+          <td><%= @fish.address %></td>
+        </tr>
       </table>
 
 <% if @fish.user == current_user %>
@@ -89,3 +93,56 @@
      </div>
    </div>
 </div>
+
+
+<h2>釣れたポイント周辺</h2>
+<!-- form_withはデフォルトでremote: trueの挙動になります -->
+<div class="map_wrapper">
+  <div id="map" class="gmap"></div>
+</div>
+
+<style>
+#map{
+  height: 600px;
+}
+</style>
+
+<script>
+ let mapInstance
+ let geocoder
+  // 変数を追加
+ let marker
+
+ function initMap() {
+   geocoder = new google.maps.Geocoder()
+
+    // 変数の名前をmapInstanceに変更、デフォルト位置を東京に変更
+   mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: 35.681,
+      lng: 139.767
+    },
+    zoom: 8
+ });
+
+ // 保存された地図情報からピンをさす
+    // google.maps.LatLngインスタンスを生成
+    pos = new google.maps.LatLng(
+    <%=@fish.latitude%>, //latitude
+    <%=@fish.longitude%> //longitude
+    );
+    default_marker = new google.maps.Marker({
+    map: mapInstance,
+    position: pos,
+    icon: {
+    url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', //アイコンのURL
+    scaledSize: new google.maps.Size(45, 40) //サイズ
+    }
+    });
+
+
+
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
