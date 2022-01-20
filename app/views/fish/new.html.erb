@@ -59,21 +59,26 @@ function codeAddress() {
       if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
 
-        var marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
-        });
+      });
+
+       // ピンを中心として表示させる為のコード
+     google.maps.event.addListener(map, 'center_changed', function(){
+          var location = map.getCenter();
+          marker.setPosition(location);
+      });
 
         // 検索値を隠しデータとしてセット
-        let hidden_address = document.getElementById('hidden_address');
-        console.log(hidden_address)
+      let hidden_address = document.getElementById('hidden_address');
+      console.log(hidden_address)
         hidden_address.setAttribute("value", inputAddress);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    
-   
+
   }
 
 </script>

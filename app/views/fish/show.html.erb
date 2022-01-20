@@ -95,7 +95,7 @@
 </div>
 
 
-<h2>gmap</h2>
+<h2>釣れたポイント周辺</h2>
 <!-- form_withはデフォルトでremote: trueの挙動になります -->
 <div class="map_wrapper">
   <div id="map" class="gmap"></div>
@@ -124,9 +124,8 @@
     },
     zoom: 8
  });
- 
+
  // 保存された地図情報からピンをさす
-    <%# @fish.each do |map| %>
     // google.maps.LatLngインスタンスを生成
     pos = new google.maps.LatLng(
     <%=@fish.latitude%>, //latitude
@@ -136,12 +135,14 @@
     map: mapInstance,
     position: pos,
     icon: {
-    url: ' https://maps.google.com/mapfiles/ms/icons/green-dot.png', //アイコンのURL
-    scaledSize: new google.maps.Size(40, 40) //サイズ
+    url: 'https://maps.google.com/mapfiles/kml/paddle/red-stars.png', //アイコンのURL
+    scaledSize: new google.maps.Size(45, 40) //サイズ
     }
     });
-    <%# end %>
+
+
+
   }
- 
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
