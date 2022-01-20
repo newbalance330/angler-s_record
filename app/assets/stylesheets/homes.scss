@@ -2,33 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+main {
+ display: flex; /* Flexboxの利用 */
+ justify-content: center; /* 要素の横並び・中央寄せ */
+ background-color: #0304021c;
+}
 
-.background {
-  background-image: url(/img/'fishing-g05c42157b_1920.jpg');
-  margin: 0;
-  padding: 0;
+
+.main-visual {
   width: 100%;
-  height: 550px;
-  background-repeat: none;
+  height: 600px;
+  background-image: url(img/fishing-g05c42157b_1920.jpg);
   background-size: cover;
   background-position: center;
-  opacity: .9;
+   opacity: 0.8;
+}
+
+.main-title{
+  font-size: 65px;
+}
+
+.main-visual-content {
+  width: 60%;
+  height: 500px;
+  color: #fff;
+  text-align: center;
+  padding-top: 105px;
   font-family: 'Great Vibes', cursive;
 }
 
-
-
-
-
-.header {
-  height: 100vh;
+.main-visual-text {
+  color: #fff;
+  line-height: 2;
+  font-size: 38px;
+  padding-top: 20px;
 }
 
-.header .jumbotron {
-  background-image: url(/img/'fishing-g05c42157b_1920.jpg');
-  background-size: cover;
-  background-position: center top;
-  position: relative;
-  height: 90%;
-  margin-bottom: 0;
+.space {
+  width: 100%;
+  height: 15px;
+  font-family: 'Great Vibes', cursive;
+}
+
+.textright {
+  height: 45px;
+  padding-top: 15px;
+}
+
+
+.main-visual-abouttext {
+   color: #fff;
+  line-height: 2;
+  font-size: 35px;
+  padding-top: 20px;
 }
