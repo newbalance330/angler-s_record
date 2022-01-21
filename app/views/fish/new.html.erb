@@ -1,37 +1,44 @@
-<h1>Fishes#new</h1>
- <%= form_with model: @fish, local:true do |f| %>
- </div>
-   <table class="admin_items">
-      <tr>
-        <th>釣果画像</th>
-        <td><%= f.attachment_field :image %></td>
-      </tr>
-      <tr>
-        <th>魚種</th>
-        <td><%= f.text_field :fish_name %></td>
-      </tr>
-      <tr>
-        <th>ルアー名　メーカー</th>
-        <td><%= f.text_field :lure %></td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td><input id="address" type="textbox" value=""></td>
-        <td><input type="button" value="検索" onclick="codeAddress()"></td>
-        <input type="hidden" name="fish[address]" id="hidden_address">
-      </tr>
-      <tr>
-        <th>本文</th>
-        <td><%= f.text_area :body %></td>
-      </tr>
-   </table>
-   <%= f.submit "新規登録" , class: 'btn btn-primary' %>
-  <% end %>
+
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">釣果投稿フォーム</h5>
+      <div class="form-body p-4">
+        <% if @fish.errors.any? %>
+          <%= @fish.errors.count %>件のエラーが発生しました
+          <% @@fish.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+        <%= form_with model: @fish, local:true do |f| %>
+         <label class="input-label">釣果画像</label>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-fish"></i></span>
+            </div>
+            <%= f.text_field :fish_name, class:"form-control", placeholder:"魚種名" %>
+          </div>
+          <label class="input-label">ルアー名</label>
+          <%= f.text_area :lure, class:"form-control", placeholder:"ルアー名" %>
+          <label class="input-label">コメント記入欄</label>
+          <%= f.text_area :body, class:"form-control", rows:"4", placeholder:"コメント記入欄" %>
+          <label class="input-label">ポイント</label>
+          <input id="address" type="textbox" value="" placeholder="入力後検索で確認">
+          <input type="button" value="検索" onclick="codeAddress()">
+          <input type="hidden" name="fish[address]" id="hidden_address">
+          <hr>
+          <%= f.submit '新規投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id='map'></div>
 <style>
 #map{
-  height: 600px;
+  height: 400px;
 }
 </style>
 
@@ -49,7 +56,7 @@
         lat: 35.681,
         lng: 139.767
       },
-      zoom: 15
+      zoom: 12
     });
   }
 function codeAddress() {
