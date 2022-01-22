@@ -1,6 +1,6 @@
 <h1>アイテム一覧</h1>
 
-<% @items.each do |item| %>
+<% @items.reverse.each do |item| %>
 <%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg' %>
  <%= link_to item.name, item_path(item.id) %></td>
           <td class="col-md-2"><%= item.name %></td>
