@@ -20,7 +20,7 @@ class FishController < ApplicationController
     @fish = Fish.find(params[:id])
     @fish_comment = FishComment.new
     @user = @fish.user
-
+    # @fish_comments = FishComment.all
   end
 
   def fish

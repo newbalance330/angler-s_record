@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user_id = current_user.id
     if @item.save
-      redirect_to item_path(@item), notice: "You have created item successfully."
+      redirect_to item_path(@item), notice: "アイテムが新しく登録されました!!"
     else
       @items = Item.all
       render 'index'

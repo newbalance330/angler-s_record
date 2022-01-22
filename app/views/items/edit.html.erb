@@ -1,28 +1,29 @@
-<h1>アイテム  編集画面</h1>
-<h3>変更前の画像</h3>
-<%= attachment_image_tag @item, :item_image, :fill, 200, 200, format: "jpeg" %>
-<%= form_with model: @item, url: item_path(@item.id), local: true do |f| %>
-      <table>
-        <tr>
-          <th>アイテム画像</th>
-          <td><%= f.attachment_field :item_image %></td>
-        </tr>
-
-        <tr>
-          <th>アイテム名</th>
-          <td><%= f.text_field :name %></td>
-        </tr>
-
-        <tr>
-          <th>商品説明</th>
-          <td><%= f.text_area :body %></td>
-        </tr>
-       <th>保有ステータス</th>
-        <td class="col-md-3">
-          <%#= f.select :status, [['所有', 1], ['ロスト...', 2], ['欲しい!!', 3]], :selected => 1 %>
-          <%= f.select :status, Item.statuses.map { |k,v| [I18n.t("enum.item.status.#{k}"), k]} %>
-        </td>
-      </table>
-      <br>
-      <%= f.submit "変更を保存", class: 'btn btn-primary' %>
-    <% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">アイテム編集フォーム</h5>
+      <div class="form-body p-4">
+        <% if @item.errors.any? %>
+          <%= @item.errors.count %>件のエラーが発生しました
+          <% @item.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+        <label class="input-label">現在の画像</label>
+        <%= attachment_image_tag @item, :item_image, :fill, 200, 200, format: "jpeg", fallback: "img/no_image.jpg", size:'200x200', class:"img-thumbnail" %>
+        <%= form_with model: @item, url: item_path(@item.id), local: true do |f| %>
+          <label class="input-label">アイテム画像</label>
+          <%= f.attachment_field :item_image, class: "w-100" %>
+          <label class="input-label">アイテム名</label>
+          <%= f.text_area :name, class:"form-control" %>
+          <label class="input-label">紹介文</label>
+          <%= f.text_area :body, class:"form-control", rows:"4" %>
+          <label class="status">所有ステータス</label><br>
+          <%= f.select :status, Item.statuses.map { |k,v| [I18n.t("enum.item.status.#{k}"), k]}  %>
+          <hr>
+          <%= f.submit '編集する', class:"btn btn-lg btn-block btn-warning mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
