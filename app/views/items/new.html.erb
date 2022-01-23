@@ -1,14 +1,16 @@
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+  <% @item.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">アイテム投稿フォーム</h5>
       <div class="form-body p-4">
-        <% if @item.errors.any? %>
-          <%= @item.errors.count %>件のエラーが発生しました
-          <% @item.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        <% end %>
         <%= form_with model: @item, url: items_path, local:true do |f| %>
          <label class="input-label">アイテム画像</label>
           <%= f.attachment_field :item_image, class: "w-100" %>

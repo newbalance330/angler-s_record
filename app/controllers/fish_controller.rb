@@ -9,10 +9,9 @@ class FishController < ApplicationController
     @fish = Fish.new(fish_params)
     @fish.user_id = current_user.id
     if @fish.save
-      redirect_to fish_path(@fish), notice: "You have created fish successfully."
+      redirect_to fish_path(@fish), notice: "新規投稿が完了しました！."
     else
-      @fish = Fish.all
-      render 'index'
+      render 'new'
     end
   end
 

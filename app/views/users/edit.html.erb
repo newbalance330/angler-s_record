@@ -1,14 +1,14 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+    <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <div class="container">
   <div class="row no-gutters">
     <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">ユーザー編集フォーム</h5>
       <div class="form-body p-4">
-        <% if @user.errors.any? %>
-          <%= @user.errors.count %>件のエラーが発生しました
-          <% @user.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        <% end %>
         <label class="input-label">現在のアイコン画像</label>
         <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: "jpeg", fallback: "img/no_image.jpg", size:'200x200', class:"img-thumbnail rounded-circle" %>
         <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>

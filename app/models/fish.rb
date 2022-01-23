@@ -9,6 +9,11 @@ class Fish < ApplicationRecord
 
   attachment :image
 
+  validates :fish_name, presence: true
+  validates :lure, presence: true
+  validates :address, presence: true
+  validates :image, presence: true
+
   def fish_favorited_by?(user)
     fish_favorites.where(user_id: user.id).exists?
   end

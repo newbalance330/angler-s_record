@@ -1,9 +1,12 @@
 <h1>アイテム一覧</h1>
-
-<% @items.reverse.each do |item| %>
-<%= attachment_image_tag item, :item_image, :fill, 100, 100, format: 'jpeg' %>
- <%= link_to item.name, item_path(item.id) %></td>
-          <td class="col-md-2"><%= item.name %></td>
-          <td class="col-md-2"><%= item.body %></td>
-          <td class="col-md-2"><%= I18n.t("enum.item.status.#{item.status}")%></td>
-<% end %>
+<div class="container">
+   <div class="row">
+     <% @items.reverse.each do |item| %>
+       <div class="col-lg-3 col-md-4 thumb">
+         <%= link_to item_path(item) do %>
+           <%= attachment_image_tag item, :item_image, :fill, 430, 300, format: 'jpeg', class: "fluid img-thumbnail" %>
+         <% end %>
+       </div>
+     <% end %>
+	 </div>
+</div>

@@ -9,8 +9,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item), notice: "アイテムが新しく登録されました!!"
     else
-      @items = Item.all
-      render 'index'
+      render 'new'
     end
   end
 
