@@ -8,6 +8,10 @@ class FishController < ApplicationController
   def create
     @fish = Fish.new(fish_params)
     @fish.user_id = current_user.id
+    results = Geocoder.search(fish_params[:address])
+    lat, lng = results.first.coordinates
+    @fish.latitude = lat
+    @fish.longitude = lng
     if @fish.save
       redirect_to fish_path(@fish), notice: "新規投稿が完了しました！."
     else
@@ -44,9 +48,15 @@ class FishController < ApplicationController
   end
 
   def update
-    fish = Fish.find(params[:id])
-    fish.update(fish_params)
-    redirect_to fish_path(fish.id)
+    @fish = Fish.find(params[:id])
+    if fish_params[:address] == ""
+       flash[:notice] = "住所を記入してください。"
+     render :edit and return
+    end
+    results = Geocoder.search(fish_params[:address])
+    lat, lng = results.first.coordinates
+    @fish.update(fish_params.merge(latitude: lat, longitude: lng))
+    redirect_to fish_path(@fish.id)
   end
 
   def destroy
