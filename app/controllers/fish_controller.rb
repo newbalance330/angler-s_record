@@ -50,7 +50,7 @@ class FishController < ApplicationController
   def update
     @fish = Fish.find(params[:id])
     if fish_params[:address] == ""
-       flash[:notice] = "住所を記入してください。"
+       flash[:notice] = "ポイントを記入してください。"
      render :edit and return
     end
     results = Geocoder.search(fish_params[:address])
