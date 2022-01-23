@@ -3,5 +3,25 @@ ja:
     item:
       status:
         retention: "所有"
-        lost: "ロスト"
+        lost: "ロスト・・・"
         want: "欲しい!"
+  activerecord:
+    models:
+      fish:
+      user:
+      item:
+    attributes:
+      fish:
+        fish_name: 魚種名
+        image: 釣果画像
+        lure: ルアー
+        address: ポイント（住所）
+      user:
+        name: ユーザー名
+      item:
+        item_image: アイテム画像
+        name: ルアー名
+        status: 所有ステータス
+    errors:
+     messages:
+         blank: "記入欄が空白です"

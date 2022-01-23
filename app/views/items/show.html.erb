@@ -16,6 +16,8 @@
           </p>
           <p class="card-title "><i class="fas fa-comment-dots"></i>：<%= @item.body %></p>
           <i class="fas fa-shopping-cart"></i>：<%= I18n.t("enum.item.status.#{@item.status}")%></p>
+          <span><i class="fas fa-user-circle"></i> by <%= @item.user.name %> ｜ </span>
+          <span><i class="fa fa-calendar"></i> <%= @item.created_at.strftime('%Y/%m/%d') %></span><br>
           <% if @item.user == current_user %>
             <%= link_to edit_item_path(@item.id) do %>
               <button type="button" class="btn btn-warning"> 編集する </button>
@@ -29,85 +31,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>Items#show</h1>
-<h3>アイテム詳細</h3>
- <%= attachment_image_tag @item, :item_image, :fill, 550, 600, format: "jpeg" %>
-
-<th>商品</th>
-  <td><%= @item.name %></td>
-
-  <th>商品説明</th>
-  　<td><%= @item.body %></td>
-
-  　 <th>保有ステータス</th>
-          <td><%= I18n.t("enum.item.status.#{@item.status}")%></td>
-
- <% if @item.user == current_user %>
-
-  　<%= link_to edit_item_path(@item.id) do %>
-        <button type="button" class="btn btn-success"> 編集する </button>
-    <% end %>
-    <%= link_to item_path(@item.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
-        <button type="button" class="btn btn-success"> 削除する </button>
-    <% end %>
-  <% end %>
-
-
-  <div class="container">
-  <h3>商品詳細</h3>
-  <div class="row">
-    <div class="col-md-4">
-      <%= attachment_image_tag @item, :item_image, :fill, 400, 400, format: "jpeg" %>
-    </div>
-    <div class="col-md-5">
-      <table class="table cart_products">
-        <tr>
-          <th>商品</th>
-          <td><%= @item.name %></td>
-        </tr>
-        <tr>
-          <th>商品説明</th>
-          <td><%= @item.body %></td>
-        </tr>
-        <tr>
-          <th>ジャンル</th>
-          <td><%= @item.name %></td>
-        </tr>
-        <tr>
-
-        </tr>
-        <tr>
-          <th>販売ステータス</th>
-          <td><%#= @item.is_active ? "販売中" : "販売停止中" %></td>
-        </tr>
-      </table>
-      <br>
-      <%#= link_to edit_admin_item_path(@item.id) do %>
-        <button type="button" class="btn btn-success">
-          編集する
-        </button>

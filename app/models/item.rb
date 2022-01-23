@@ -2,7 +2,10 @@ class Item < ApplicationRecord
 
   belongs_to :user
   attachment :item_image
-
+  
+  validates :name, presence: true
+  validates :status, presence: true
+  validates :item_image, presence: true
 
   def self.looks(search, word)
     if word == ""

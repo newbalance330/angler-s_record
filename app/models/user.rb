@@ -43,6 +43,8 @@ class User < ApplicationRecord
     end
   end
 
-
   attachment :profile_image, destroy: false
+
+  validates :name, presence: true
+
 end

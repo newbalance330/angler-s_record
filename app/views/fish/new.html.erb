@@ -1,15 +1,16 @@
-
+<% if @fish.errors.any? %>
+  <%= @fish.errors.count %>件のエラーが発生しました
+  <ul>
+  <% @fish.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">釣果投稿フォーム</h5>
       <div class="form-body p-4">
-        <% if @fish.errors.any? %>
-          <%= @fish.errors.count %>件のエラーが発生しました
-          <% @fish.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-        <% end %>
         <%= form_with model: @fish, local:true do |f| %>
          <label class="input-label">釣果画像</label>
           <%= f.attachment_field :image, class: "w-100" %>
