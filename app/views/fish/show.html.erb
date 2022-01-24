@@ -44,6 +44,7 @@
           <% end %>
           <div>
             <% @fish.fish_comments.each do |fish_comment| %>
+              <hr>
               <%= fish_comment.user.name %>
               <%= fish_comment.created_at.strftime('%Y/%m/%d') %> / <%= fish_comment.comment %>
               <% if fish_comment.user == current_user %>
@@ -66,8 +67,6 @@
 </div>
 
 <h2>釣れたポイント</h2>
-<%=@fish.latitude%>
-<%=@fish.longitude%>
 <!-- form_withはデフォルトでremote: trueの挙動になります -->
 <div class="map_wrapper">
   <div id="map" class="gmap"></div>

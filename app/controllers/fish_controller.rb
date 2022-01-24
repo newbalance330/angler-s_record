@@ -13,7 +13,7 @@ class FishController < ApplicationController
     @fish.latitude = lat
     @fish.longitude = lng
     if @fish.save
-      redirect_to fish_path(@fish), notice: "新規投稿が完了しました！."
+      redirect_to fish_path(@fish), notice: "新規投稿が完了しました！"
     else
       render 'new'
     end
@@ -23,7 +23,7 @@ class FishController < ApplicationController
     @fish = Fish.find(params[:id])
     @fish_comment = FishComment.new
     @user = @fish.user
-    # @fish_comments = FishComment.all
+
   end
 
   def fish
