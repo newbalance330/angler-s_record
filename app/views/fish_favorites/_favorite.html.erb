@@ -1,0 +1,13 @@
+<% if fish.fish_favorited_by?(current_user) %>
+  <span>
+    <%= link_to(fish_fish_favorites_path(fish), class:"text-dark", method: :delete, remote: true) do %>
+      <i class="fa fa-heart heart_red" aria-hidden="true"></i> <%= fish.fish_favorites.count %>
+    <% end %>
+  </span>
+<% else %>
+  <span>
+    <%= link_to(fish_fish_favorites_path(fish), class:"text-dark", method: :post, remote: true) do %>
+      <i class="fa fa-heart heart_blue" aria-hidden="true"></i> <%= fish.fish_favorites.count %>
+    <% end %>
+  </span>
+<% end %>
