@@ -28,7 +28,7 @@
               <li><%= link_to ' Home',user_path(current_user),class: 'fas fa-home nav-link text-light' %></li>
               <li><%= link_to ' Users',users_path,class: 'fas fa-users nav-link text-light' %></li>
               <li><%= link_to ' Fishes',fish_index_path ,class: 'fas fa-fish nav-link text-light'%></li>
-              <li><%= link_to ' lures',items_path ,class: 'fas fa-toolbox nav-link text-light'%></li>
+              <li><%= link_to ' Items',items_path ,class: 'fas fa-toolbox nav-link text-light'%></li>
               <li><%= link_to ' Log aut', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
             <% else %>
               <li><%= link_to ' Top',root_path,class: 'fas fa-home nav-link text-light' %></li>
