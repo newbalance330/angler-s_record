@@ -20,7 +20,12 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    if params[:format].present?
+      @user = User.find(params[:format])
+      @items = @user.items
+    else
+      @items = Item.all
+    end
   end
 
   def edit
