@@ -1,0 +1,101 @@
+<% if @fish.errors.any? %>
+  <%= @fish.errors.count %>件のエラーが発生しました
+  <ul>
+  <% @fish.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">釣果投稿フォーム</h5>
+      <div class="form-body p-4">
+        <%= form_with model: @fish, local:true do |f| %>
+         <label class="input-label">釣果画像</label>
+          <%= f.attachment_field :image, class: "w-100" %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-fish"></i></span>
+            </div>
+            <%= f.text_field :fish_name, class:"form-control", placeholder:"魚種名" %>
+          </div>
+          <label class="input-label">ルアー名</label>
+          <%= f.text_area :lure, class:"form-control", placeholder:"ルアー名" %>
+          <label class="input-label">コメント記入欄</label>
+          <%= f.text_area :body, class:"form-control", rows:"4", placeholder:"コメント記入欄" %>
+          <label class="input-label">ポイント</label><br>
+          <input id="address" type="textbox" value="" placeholder="入力後検索で確認">
+          <input type="button" value="検索" onclick="codeAddress()">
+          <input type="hidden" name="fish[address]" id="hidden_address">
+          <hr>
+          <%= f.submit '新規投稿', class:"btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='map'></div>
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<script>
+
+
+
+    function initMap() {
+      let map
+      let geocoder
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 35.681,
+          lng: 139.767
+        },
+        zoom: 12
+      });
+    }
+  function codeAddress() {
+      let map
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+          lat: 35.681,
+          lng: 139.767
+        },
+        zoom: 12
+      });
+      let inputAddress = document.getElementById('address').value;
+      let geocoder
+      geocoder = new google.maps.Geocoder()
+
+      geocoder.geocode({
+        'address': inputAddress
+      }, function (results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+
+
+          // 検索値を隠しデータとしてセット
+        let hidden_address = document.getElementById('hidden_address');
+        console.log(hidden_address)
+          hidden_address.setAttribute("value", inputAddress);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+
+    }
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>

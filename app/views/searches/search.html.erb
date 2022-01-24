@@ -1,0 +1,49 @@
+<table class="table table-hover table-inverse">
+  <% if !params[:range].blank? && params[:word] == "" %>
+    <p>検索結果はありません.</p>
+  <% end %>
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+   <h1>ユーザー検索結果</h1>
+   <div class="container">
+      <div class="row">
+         <% @users.reverse.each do |user| %>
+          <div class="col-lg-3 col-md-4 thumb">
+            <%= link_to user_path(user) do %>
+              <%= attachment_image_tag user, :profile_image, :fill, 400, 400, format: 'jpeg', fallback: "img/no_image.jpg", size:"200x200", class: "fluid img-thumbnail rounded-circle" %><br>
+              <i class="fas fa-user-circle"></i><%= user.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+   </div>
+  <% elsif @range == "Fish" %>
+    <h1>釣果検索結果</h1>
+    <div class="container">
+       <div class="row">
+         <% @fish.reverse.each do |fish| %>
+           <div class="col-lg-3 col-md-4 thumb">
+             <%= link_to fish_path(fish) do %>
+                <%= attachment_image_tag fish, :image, :fill, 430, 300, format: 'jpeg', class: "fluid img-thumbnail" %>
+             <% end %>
+           </div>
+         <% end %>
+       </div>
+    </div>
+  <% elsif @range == "Item" %>
+    <h1>アイテム検索結果</h1>
+    <div class="container">
+       <div class="row">
+         <% @items.reverse.each do |item| %>
+           <div class="col-lg-3 col-md-4 thumb">
+             <%= link_to item_path(item) do %>
+               <%= attachment_image_tag item, :item_image, :fill, 430, 300, format: 'jpeg', class: "fluid img-thumbnail" %>
+             <% end %>
+           </div>
+         <% end %>
+    	 </div>
+    </div>
+  <% else %>
+    <h3>検索に該当する投稿はありませんでした。</h3>
+  <% end %>
+</table>

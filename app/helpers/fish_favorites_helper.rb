@@ -1,0 +1,2 @@
+module FishFavoritesHelper
+end

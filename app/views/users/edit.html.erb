@@ -1,0 +1,27 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+    <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-7 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-dark bg-light p-4 mb-0">ユーザー編集フォーム</h5>
+      <div class="form-body p-4">
+        <label class="input-label">現在のアイコン画像</label>
+        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: "jpeg", fallback: "img/no_image.jpg", size:'200x200', class:"img-thumbnail rounded-circle" %>
+        <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
+          <label class="input-label">アイコン画像</label>
+          <%= f.attachment_field :profile_image, class: "w-100" %>
+          <label class="input-label">ユーザー名</label>
+          <%= f.text_area :name, class:"form-control" %>
+          <label class="input-label">紹介文</label>
+          <%= f.text_area :introduction, class:"form-control", rows:"4" %>
+          <hr>
+          <%= f.submit '編集する', class:"btn btn-lg btn-block btn-warning mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
