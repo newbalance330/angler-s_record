@@ -8,6 +8,10 @@ class FishController < ApplicationController
   def create
     @fish = Fish.new(fish_params)
     @fish.user_id = current_user.id
+    if fish_params[:address] == ""
+       flash[:notice] = "ポイントを記入してください。"
+       render :new and return
+    end
     results = Geocoder.search(fish_params[:address])
     lat, lng = results.first.coordinates
     @fish.latitude = lat
