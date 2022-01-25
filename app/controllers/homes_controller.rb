@@ -5,6 +5,7 @@ class HomesController < ApplicationController
   end
 
   def about
+     @fish = Fish.all
   end
 
 end
