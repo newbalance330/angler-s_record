@@ -22,10 +22,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
 }
 
+.navbar-brand {
+ font-size: 30px;
+ margin-top: 30px;
+ font-family: 'Great Vibes', cursive;
+}
 
+.navbar-nav {
+ font-size: 20px;
+ text-align: center;
+}
 
 
 .nav-link {
@@ -41,5 +50,11 @@
  color: #a1a1a185;
 }
 
+.search_form {
+ padding-bottom: 10px;
+}
 
 
+.index-title {
+ padding-left: 40px;
+}
