@@ -5,7 +5,7 @@ class FishCommentsController < ApplicationController
     comment = current_user.fish_comments.new(fish_comment_params)
     comment.fish_id = fish.id
     comment.save
-    redirect_to fish_index_path(fish)
+    redirect_to fish_path(fish)
  end
 
  def destroy
