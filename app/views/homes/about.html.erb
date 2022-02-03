@@ -8,27 +8,4 @@
     </p>
   </div>
 </div>
-<div class="container">
-   <h2><b>New Post</b></h2>
-   <div class="d-flex flex-wrap">
-     <% if user_signed_in? %>
-       <% @fish.last(4).reverse.each do |fish| %>
-         <div class="col-md-3">
-           <div class="col-xs-2" style="padding-right: 0px; padding-left: 0px; padding-bottom: 30px;">
-             <%= link_to fish_path(fish) do %>
-               <%= attachment_image_tag fish, :image, :fill, 210, 210, fallback:"img/no_image.jpg", size: "220x220", class: "fluid img-thumbnail" %><br>
-             <% end %>
-           </div>
-         </div>
-       <% end %>
-     <% else %>
-       <% @fish.last(4).reverse.each do |fish| %>
-         <div class="col-md-3">
-           <div class="col-xs-2" style="padding-right: 0px; padding-left: 0px; padding-bottom: 30px;">
-             <%= attachment_image_tag fish, :image, :fill, 210, 210, fallback:"img/no_image.jpg", size: "220x220", class: "fluid img-thumbnail" %><br>
-           </div>
-         </div>
-       <% end %>
-     <% end %>
-   </div>
- </div>
+<%= render 'new_post', fish: @fish %>
