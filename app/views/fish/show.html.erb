@@ -14,7 +14,9 @@
           <p class="card-title "><i class="fas fa-drumstick-bite"></i>：<%= @fish.lure %></p>
           <p class="card-title "><i class="fas fa-comment-dots"></i>：<%= @fish.body %></p>
           <p class="card-title "><i class="fas fa-anchor"></i>：<%= @fish.address %></p>
-          <span><i class="fas fa-user-circle"></i> by <%= @fish.user.name %> ｜ </span>
+          <%= link_to user_path(@user.id) do %>
+            <span><i class="fas fa-user-circle"></i> by <%= @fish.user.name %> ｜ </span>
+          <% end %>
           <span><i class="fa fa-calendar"></i> <%= @fish.created_at.strftime('%Y/%m/%d') %> ｜ </span>
           <span><i class="fa fa-comment"></i> <%= link_to "#{@fish.fish_comments.count}", fish_path(@fish.id), class:"text-dark" %> ｜ </span>
           <span id="favorite_btn_<%= @fish.id %>">
