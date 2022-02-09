@@ -14,7 +14,9 @@
           </p>
           <p class="card-title "><i class="fas fa-comment-dots"></i>：<%= @item.body %></p>
           <i class="fas fa-shopping-cart"></i>：<%= I18n.t("enum.item.status.#{@item.status}")%></p>
-          <span><i class="fas fa-user-circle"></i> by <%= @item.user.name %> ｜ </span>
+          <%= link_to user_path(@user.id) do %>
+            <span><i class="fas fa-user-circle"></i> by <%= @item.user.name %> ｜ </span>
+          <% end %>
           <span><i class="fa fa-calendar"></i> <%= @item.created_at.strftime('%Y/%m/%d') %></span><br>
           <% if @item.user == current_user %>
             <%= link_to edit_item_path(@item.id) do %>
