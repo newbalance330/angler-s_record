@@ -33,7 +33,9 @@
           <div>
             <% @fish.fish_comments.each do |fish_comment| %>
               <hr>
-              <%= fish_comment.user.name %>
+              <%= link_to user_path(@user.id) do %>
+               <%= fish_comment.user.name %>
+              <% end %>
               <%= fish_comment.created_at.strftime('%Y/%m/%d') %>  /  <i class="fa fa-comment"></i>  :  <%= fish_comment.comment %>
               <% if fish_comment.user == current_user %>
                 <div>
