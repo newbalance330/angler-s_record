@@ -29,10 +29,10 @@
             <% end %>
           <% end %>
           <% if user_signed_in? && @user == current_user %>
-            <%= link_to '新規釣果投稿',new_fish_path(@user),class: "btn  btn-primary fas fa-fish" %>
-            <%= link_to '新規アイテム投稿',new_item_path(@user),class: "btn  btn-info fas fa-tools" %>
-            <%= link_to 'アイテムBox',items_path(@user),class: "btn  btn-success  fas fa-toolbox" %>
-            <%= link_to '編集画面',edit_user_path(@user),class: "btn btn-warning fas fa-user-cog edit_user_#{@user.id}" %>
+            <%= link_to '  新規釣果投稿',new_fish_path(@user),class: "btn  btn-primary fas fa-fish" %>
+            <%= link_to '  新規アイテム投稿',new_item_path(@user),class: "btn  btn-info fas fa-tools" %>
+            <%= link_to '  アイテムBox',items_path(@user),class: "btn  btn-success  fas fa-toolbox" %>
+            <%= link_to '  編集画面',edit_user_path(@user),class: "btn btn-warning fas fa-user-cog edit_user_#{@user.id}" %>
           <% else %>
             <%= link_to 'アイテムBox',items_path(@user),class: "btn  btn-success  fas fa-toolbox" %>
           <% end %>
