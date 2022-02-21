@@ -4,7 +4,7 @@
   <% end %>
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
-   <h1>ユーザー検索結果</h1>
+   <h1>User 検索結果</h1>
    <div class="container">
       <div class="row">
          <% @users.reverse.each do |user| %>
@@ -18,7 +18,7 @@
       </div>
    </div>
   <% elsif @range == "Fish" %>
-    <h1>釣果検索結果</h1>
+    <h1>Fish 検索結果</h1>
     <div class="container">
        <div class="row">
          <% @fish.reverse.each do |fish| %>
@@ -31,7 +31,7 @@
        </div>
     </div>
   <% elsif @range == "Item" %>
-    <h1>アイテム検索結果</h1>
+    <h1>Item 検索結果</h1>
     <div class="container">
        <div class="row">
          <% @items.reverse.each do |item| %>
