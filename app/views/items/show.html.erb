@@ -22,7 +22,7 @@
             <%= link_to edit_item_path(@item.id) do %>
               <button type="button" class="btn btn-warning"> 編集する </button>
             <% end %>
-            <%= link_to item_path(@item.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
+            <%= link_to item_path(@item.id), method: :delete, "data-confirm"  => "本当に投稿を削除しますか？"  do %>
               <button type="button" class="btn btn-danger"> 削除する </button>
             <% end %>
           <% end %>
