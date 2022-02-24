@@ -26,7 +26,7 @@
             <%= link_to edit_fish_path(@fish.id) do %>
               <button type="button" class="btn btn-warning"> 編集する </button>
             <% end %>
-            <%= link_to fish_path(@fish.id), method: :delete, "data-confirm"  => "本当に削除しますか？"  do %>
+            <%= link_to fish_path(@fish.id), method: :delete, "data-confirm"  => "本当に投稿を削除しますか？"  do %>
               <button type="button" class="btn btn-danger"> 削除する </button>
             <% end %>
           <% end %>
