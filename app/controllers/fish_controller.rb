@@ -49,6 +49,11 @@ class FishController < ApplicationController
 
   def edit
     @fish = Fish.find(params[:id])
+    if @fish.user.id == current_user.id
+      render "edit"
+    else
+      redirect_to fish_index_path
+    end
   end
 
   def update
