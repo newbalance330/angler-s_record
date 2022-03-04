@@ -10,7 +10,7 @@
       <h5 class="text-dark bg-light p-4 mb-0">ユーザー編集フォーム</h5>
       <div class="form-body p-4">
         <label class="input-label">現在のアイコン画像</label>
-        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: "jpeg", fallback: "img/no_image.jpg", size:'200x200', class:"img-thumbnail rounded-circle" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: "jpeg", fallback: "no_image.jpg", size:'200x200', class:"img-thumbnail rounded-circle" %>
         <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
           <label class="input-label">新規アイコン画像</label>
           <%= f.attachment_field :profile_image, class: "w-100" %>
